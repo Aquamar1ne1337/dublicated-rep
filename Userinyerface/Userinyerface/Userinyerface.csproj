@@ -35,39 +35,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="C:\Users\Герман\.nuget\packages\autoitx.dotnet\3.3.14.5\build\AutoItX3.dll" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="C:\Users\Герман\.nuget\packages\autoitx.dotnet\3.3.14.5\build\AutoItX3_x64.dll" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="C:\Users\Герман\.nuget\packages\autoitx.dotnet\3.3.14.5\build\AutoItX3.dll" Link="Dlls\AutoItX3.dll" />
-    <None Update="C:\Users\Герман\.nuget\packages\autoitx.dotnet\3.3.14.5\build\AutoItX3.dll" Link="Dlls\AutoItX3.dll" />
-    <None Update="C:\Users\Герман\.nuget\packages\autoitx.dotnet\3.3.14.5\build\AutoItX3.dll" Link="Dlls\AutoItX3.dll" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="C:\Users\Герман\.nuget\packages\autoitx.dotnet\3.3.14.5\build\AutoItX3_x64.dll" Link="Dlls\AutoItX3_x64.dll" />
-    <None Update="C:\Users\Герман\.nuget\packages\autoitx.dotnet\3.3.14.5\build\AutoItX3_x64.dll" Link="Dlls\AutoItX3_x64.dll" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="C:\Users\Герман\.nuget\packages\autoitx.dotnet\3.3.14.5\build\AutoItX3.dll" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="C:\Users\Герман\.nuget\packages\autoitx.dotnet\3.3.14.5\build\AutoItX3_x64.dll" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="C:\Users\Герман\.nuget\packages\autoitx.dotnet\3.3.14.5\build\AutoItX3.dll" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Reference Include="AutoItX3.Assembly">
-      <HintPath>bin\Debug\net5.0\AutoItX3.Assembly.dll</HintPath>
+      <HintPath>Dlls\AutoItX3.Assembly.dll</HintPath>
     </Reference>
   </ItemGroup>
 
