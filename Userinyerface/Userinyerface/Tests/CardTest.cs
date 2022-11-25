@@ -26,6 +26,7 @@ namespace Userinyerface.Tests
 
             var avatarForm = new AvatarForm();
             Assert.IsTrue(avatarForm.State.WaitForDisplayed(), "Avatar Page is not opened.");
+            avatarForm.ClickInterestChechBoxes(testData.NumberOfCheckBoxes);
             avatarForm.ClickUploadButton();
         }
     }

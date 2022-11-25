@@ -1,5 +1,7 @@
 ﻿using Fare;
 using System;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Userinyerface.Utilities
 {
@@ -8,7 +10,12 @@ namespace Userinyerface.Utilities
         public static string GetRandomPassword()
         {
             var passwordRegex = new Xeger("[a-zA-Z0-9А-я]{10,30}");
-            return passwordRegex.Generate();
+            var randomPassword = passwordRegex.Generate();
+            while (!randomPassword.Any(char.IsDigit) && !Regex.IsMatch(randomPassword, @"\p{IsCyrillic}"))
+            {
+               randomPassword = passwordRegex.Generate();
+            }
+            return randomPassword;
         }
 
         public static string GetRandomLatinString()

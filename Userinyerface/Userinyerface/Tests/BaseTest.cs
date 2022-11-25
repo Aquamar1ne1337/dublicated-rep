@@ -9,12 +9,14 @@ namespace Userinyerface.Tests
     public class BaseTest
     {
         protected ConfigDataModel configData;
+        protected TestDataModel testData;
 
         [OneTimeSetUp]
         [Order(0)]
         public void ReadConfigData()
         {
             configData = new JsonSettingsFile(Constans.ConfigDataPath).GetValue<ConfigDataModel>("config");
+            testData = new JsonSettingsFile(Constans.TestDataPath).GetValue<TestDataModel>("testData");
         }
 
         [SetUp]
