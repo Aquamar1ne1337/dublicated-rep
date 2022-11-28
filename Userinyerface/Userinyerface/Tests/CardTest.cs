@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
 using Userinyerface.Forms;
 
-
 namespace Userinyerface.Tests
 {
     public class CardTest : BaseTest
@@ -28,6 +27,11 @@ namespace Userinyerface.Tests
             Assert.IsTrue(avatarForm.State.WaitForDisplayed(), "Avatar Page is not opened.");
             avatarForm.ClickInterestChechBoxes(testData.NumberOfCheckBoxes);
             avatarForm.ClickUploadButton();
+            avatarForm.ClickNextButton();
+
+            var personalDetailsForm = new PersonalDetailsForm();
+
+            Assert.IsTrue(personalDetailsForm.State.WaitForDisplayed(), "Personal Details Page is not opened.");
         }
     }
 }
