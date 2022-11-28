@@ -15,8 +15,7 @@ namespace Userinyerface.Tests
             var loginForm = new LoginForm();
 
             loginForm.ClickHideButton();
-            Assert.IsTrue(loginForm.IsHelpContainerHidden(), "Help menu is not hidden.");
-
+            Assert.IsTrue(loginForm.WaitForHelpContainerHidden(), "Help menu is not hidden.");
         }
     }
 }

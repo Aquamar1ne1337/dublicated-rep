@@ -6,9 +6,9 @@ namespace Userinyerface.Forms
 {
     public class HomeForm : Form
     {
-        public HomeForm() : base(By.XPath("//button[@class='start__button']"), "UniqueElementOfMainPage") { }
+        public HomeForm() : base(By.ClassName("start__button"), "StartButton") { }
 
-        private IButton _nextPageButton => ElementFactory.GetButton(By.XPath("//a[@class='start__link']"), "NextPageButton");
+        private IButton _nextPageButton => ElementFactory.GetButton(By.ClassName("start__link"), "NextPageButton");
 
         public void ClickNextPageButton()
         {

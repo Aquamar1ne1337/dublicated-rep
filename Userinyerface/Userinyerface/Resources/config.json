@@ -1,5 +1,6 @@
 {
   "config": {
-    "Url": "https://userinyerface.com/"
+    "Url": "https://userinyerface.com/",
+    "RandomGenerationAttemps": 15
   }
 }

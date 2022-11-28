@@ -1,5 +1,7 @@
 ﻿using NUnit.Framework;
 using Userinyerface.Forms;
+using Userinyerface.Models;
+using Userinyerface.Utilities;
 
 namespace Userinyerface.Tests
 {
@@ -9,12 +11,11 @@ namespace Userinyerface.Tests
         public void ValidateTimer()
         {
             HomeForm homeForm = new HomeForm();
-            Assert.IsTrue(homeForm.State.WaitForDisplayed(), "Home Page is not opened.");
             homeForm.ClickNextPageButton();
 
             LoginForm loginForm = new LoginForm();
-            string timerValue = loginForm.GetTimerStartTime();
-            Assert.That(timerValue, Does.EndWith("00:00"));
+            string timerValue = loginForm.GetTimerTime();
+            Assert.That(timerValue, Does.StartWith(DataReader.testData.Time));
         }
     }
 }

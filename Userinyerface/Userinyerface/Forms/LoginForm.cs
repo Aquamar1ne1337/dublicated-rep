@@ -12,7 +12,7 @@ namespace Userinyerface.Forms
     {
         private string _email = RandomUtils.GetRandomLatinString();
 
-        public LoginForm() : base(By.XPath("//a[@class='login-form__terms-conditions']"), "UniqueElementOfLoginPage") { }
+        public LoginForm() : base(By.XPath("//a[@class='login-form__terms-conditions']"), "TermsAndConditionsLabel") { }
 
         private ITextBox _passwordTextBox => ElementFactory.GetTextBox(By.XPath("//input[@placeholder='Choose Password']"), "PasswordTextBox");
         private ITextBox _emailTextBox => ElementFactory.GetTextBox(By.XPath("//input[@placeholder='Your email']"), "EmailTextBox");
@@ -26,6 +26,12 @@ namespace Userinyerface.Forms
         private ITextBox _cookiesContainer => ElementFactory.GetTextBox(By.XPath("//div[@class='cookies']"), "CookiesContainer");
         private ITextBox _hideContainer => ElementFactory.GetTextBox(By.XPath("//*[contains(@class,'help-form__title')]"), "HideContainer");
         private ILabel _timerLabel => ElementFactory.GetLabel(By.XPath("//div[contains(@class,'timer timer--white')]"), "Timer");
+        private ILabel _cardNumberLabel => ElementFactory.GetLabel(By.ClassName("page-indicator"), "CardNumberLabel");
+
+        public string GetCardNumber()
+        {
+            return _cardNumberLabel.Text;
+        }
 
         public void ClickAcceptCookies()
         {
@@ -34,15 +40,15 @@ namespace Userinyerface.Forms
 
         public bool IsFormWithCookiesClosed()
         {
-            return _cookiesContainer.State.IsDisplayed;
+            return _cookiesContainer.State.WaitForNotDisplayed();
         }
 
-        public string GetTimerStartTime()
+        public string GetTimerTime()
         {
             return _timerLabel.Text;
         }
 
-        public bool IsHelpContainerHidden()
+        public bool WaitForHelpContainerHidden()
         {
             return _hideContainer.State.WaitForNotDisplayed();
         }
@@ -52,7 +58,7 @@ namespace Userinyerface.Forms
             _hideButton.Click();
         }
 
-        public void InputPassword()
+        public void InputRandomPasswordWithFirstLetterOfEmail()
         {
             var password = RandomUtils.GetRandomPassword() + _email[0];
             _passwordTextBox.ClearAndType(password);
@@ -68,11 +74,11 @@ namespace Userinyerface.Forms
             _domainTextBox.ClearAndType(RandomUtils.GetRandomLatinString());
         }
 
-        public void SelectRandomValueInComboBox()
+        public void SelectRandomDomainInComboBox()
         {
             _domainDropBox.Click();
-            var indexOfRandomDomain = RandomUtils.GetRundomNumber(_domainDropBoxRow.Count);
-            _domainDropBoxRow[0].Click();
+            var indexOfRandomDomain = RandomUtils.GetRundomNumber(1, _domainDropBoxRow.Count - 1);
+            _domainDropBoxRow[indexOfRandomDomain].Click();
         }
 
         public void AcceptTerms()

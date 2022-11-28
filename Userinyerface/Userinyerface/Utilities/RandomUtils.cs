@@ -11,11 +11,15 @@ namespace Userinyerface.Utilities
         {
             var passwordRegex = new Xeger("[a-zA-Z0-9А-я]{10,30}");
             var randomPassword = passwordRegex.Generate();
-            while (!randomPassword.Any(char.IsDigit) && !Regex.IsMatch(randomPassword, @"\p{IsCyrillic}"))
+            for (int i = 0; i < DataReader.configData.RandomGenerationAttemps; i++) 
             {
-               randomPassword = passwordRegex.Generate();
+                if (!randomPassword.Any(char.IsDigit) && !Regex.IsMatch(randomPassword, @"\p{IsCyrillic}"))
+                {
+                    randomPassword = passwordRegex.Generate();
+                }
+                else return randomPassword;
             }
-            return randomPassword;
+            throw new Exception("Out of attemps");
         }
 
         public static string GetRandomLatinString()
@@ -24,10 +28,10 @@ namespace Userinyerface.Utilities
             return emailRegex.Generate();
         }
 
-        public static int GetRundomNumber(int lenght)
+        public static int GetRundomNumber(int min, int lenght)
         {
             Random random = new Random();
-            return random.Next(0, lenght);
+            return random.Next(min, lenght);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using Userinyerface.Forms;
+using Userinyerface.Utilities;
 
 namespace Userinyerface.Tests
 {
@@ -14,24 +15,24 @@ namespace Userinyerface.Tests
             homeForm.ClickNextPageButton();
 
             var loginForm = new LoginForm();
-            Assert.IsTrue(loginForm.State.WaitForDisplayed(), "Login Page is not opened.");
+            Assert.That(loginForm.GetCardNumber(), Does.StartWith(DataReader.testData.FirstCard), "The '1' card is not opened.");
 
-            loginForm.InputPassword();
+            loginForm.InputRandomPasswordWithFirstLetterOfEmail();
             loginForm.InputEmail();
             loginForm.InputDomain();
-            loginForm.SelectRandomValueInComboBox();
+            loginForm.SelectRandomDomainInComboBox();
             loginForm.AcceptTerms();
             loginForm.ClickNextButton();
 
             var avatarForm = new AvatarForm();
-            Assert.IsTrue(avatarForm.State.WaitForDisplayed(), "Avatar Page is not opened.");
-            avatarForm.ClickInterestChechBoxes(testData.NumberOfCheckBoxes);
+            Assert.That(avatarForm.GetCardNumber(), Does.StartWith(DataReader.testData.SecondCard), "The '2' card is not opened.");
+
+            avatarForm.ClickInterestChechBoxes(DataReader.testData.NumberOfCheckBoxes);
             avatarForm.ClickUploadButton();
             avatarForm.ClickNextButton();
 
             var personalDetailsForm = new PersonalDetailsForm();
-
-            Assert.IsTrue(personalDetailsForm.State.WaitForDisplayed(), "Personal Details Page is not opened.");
+            Assert.That(personalDetailsForm.GetCardNumber(), Does.StartWith(DataReader.testData.ThirdCard), "The '3' card is not opened.");
         }
     }
 }

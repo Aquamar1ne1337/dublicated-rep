@@ -21,7 +21,7 @@ namespace Userinyerface.Tests
             var loginForm = new LoginForm();
             loginForm.ClickAcceptCookies();
 
-            Assert.IsFalse(loginForm.IsFormWithCookiesClosed(), "Cookies form is still present.");
+            Assert.IsTrue(loginForm.IsFormWithCookiesClosed(), "Cookies form is still present.");
         }
     }
 }

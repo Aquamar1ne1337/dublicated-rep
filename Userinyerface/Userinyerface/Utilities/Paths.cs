@@ -1,6 +1,6 @@
 ﻿namespace Userinyerface.Utilities
 {
-    public class Constans
+    public class Paths
     {
         public const string ConfigDataPath = "config.json";
         public const string TestDataPath = "testConfig.json";
